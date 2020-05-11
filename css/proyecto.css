@@ -1,0 +1,464 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* CLASES E IDS DEFINIDAS EN VARIAS PÁGINAS DE MI APLIACIÓN */
+
+html{
+	height: 100%;
+}
+body{
+	background: -moz-linear-gradient(top, rgba(115,184,24,1) 0%, rgba(98,204,156,1) 41%, rgba(128,131,189,1) 77%, rgba(222,212,211,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(115,184,24,1) 0%, rgba(98,204,156,1) 41%, rgba(128,131,189,1) 77%, rgba(222,212,211,1) 100%);
+	background: -o-linear-gradient(top, rgba(115,184,24,1) 0%, rgba(98,204,156,1) 41%, rgba(128,131,189,1) 77%, rgba(222,212,211,1) 100%);
+	background: -ms-linear-gradient(top, rgba(115,184,24,1) 0%, rgba(98,204,156,1) 41%, rgba(128,131,189,1) 77%, rgba(222,212,211,1) 100%);
+	background: linear-gradient(to bottom, rgba(115,184,24,1) 0%, rgba(98,204,156,1) 41%, rgba(128,131,189,1) 77%, rgba(222,212,211,1) 100%);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+main{
+	margin: 5px 10px;
+}
+
+.thumbnail{	/* está clase también esta en la página del perfil,nuevoConcurso */
+	width: 171px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+
+.msgErrores{	/* Practicamente en todas la páginas con formulario */
+	display: none;
+	width: 100%;
+	text-align: center;
+}
+
+.msgCorrect{	/* Practicamente en todas la páginas con formulario */
+	display: none;
+	width: 100%;
+	text-align: center;
+}
+
+.alert{
+	margin-top: 5px;
+}
+
+/************ FIN DE 'GLOBALES' ********/
+
+/**************************** STYLE PARA LA CABECERA DE TODAS MIS PÁGINAS *****/
+
+/* Algunas reglas la voy a sacar fuera de los media queries ya que son comunes para todos */
+
+header #logo{
+	text-align: center;
+}
+
+#btn-menu{
+	display: none;	/*Para opciones fuera de la opcion de escritorio*/
+}
+
+header div:first-child label{		/* Este elemento es label la imagen btn-menu glyphicon */
+	font-size: 70px;
+	cursor: pointer;
+	display: none;	/*Para opciones fuera de la opcion de escritorio*/
+}
+
+.menu{
+	margin-top: 25px;
+}
+
+.menu ul{
+	margin: auto;
+	background: #9C9BC4;
+	display: flex; /* Para trabajar en una línea*/
+	list-style: none;
+}
+
+.menu ul:first-child{ /* De menu el primer elemento ul */
+	padding-left: 15px;
+	border-radius: 25px;
+}
+
+.menu ul ul{ /* A los ul dentro de ul - submenus */
+	display: none;	/*Se mostrarán solo cuando yo ejecute mi 'evento' */
+}
+
+.menu a{
+	display: block;
+	padding: 10px 15px;
+	color: white;
+	text-decoration: none; /*Quitar subrayado*/
+}
+
+.menu a:hover{ /* Para cuando pase por encima con el raton de las etiqutas a */
+	background: #6BB6A6;
+}
+
+.menu a span{
+	margin-left: 5px;
+}
+
+.menu ul li:hover ul{	/* Para los li que tengan submenus*/
+	display: block;
+	position: absolute;
+	z-index: 10;
+}
+
+#barraSearch{
+	margin-bottom: 2px;
+	text-align: center;
+}
+
+#barraSearch input{
+	width: 250px;
+	display: inline;
+	border-radius: 10px;
+}
+
+#barraSearch span{
+	font-size: 14px;
+}
+
+/****************** MEDIA QUERIE PARA PANTALLAS LAPTOP */
+@media screen and (min-width: 1200px){		
+
+	header #logo a img{
+		margin: 5px;
+		width: 300px;
+		height: 100px;
+	}
+
+	.menu ul li:hover ul{	/* Para los li que tengan submenus*/
+		transform: translateX(-5%);
+	}
+
+}
+
+/****************** MEDIA QUERIE PARA PANTALLAS TABLETAS */
+@media (max-device-width: 1199px) and (min-device-width: 768px){
+	header #logo a img{
+		margin: 5px;
+		width: 200px;
+		height: 75px;
+	}
+
+
+	.menu ul li:hover ul{
+		width: 17%;
+		transform: translateX(-5%);
+	}
+}
+
+@media (max-device-width: 960px) and (min-device-width: 600px){
+
+	header #logo a img{
+		margin: 5px;
+		width: 200px;
+		height: 75px;
+	}
+
+
+	.menu ul li:hover ul{
+		width: 27%;
+		transform: translateX(-5%);
+	}
+}
+
+/****************** MEDIA QUERIE PARA PANTALLAS MÓVILES */
+/*En versiones para movil no se verá mi imagen*/
+@media (min-device-width: 320px) and (max-device-width: 640px){
+	#logo{
+		display: none;
+	}
+
+	header {
+		height: 50px;
+		/*border: solid blue;*/
+	}
+
+	header div:first-child label{
+		display: block;
+		left: 0;
+		position: absolute;
+		color: #5A6E32;
+		margin: 0;
+		padding: 0;
+	}
+
+	.menu{
+		margin: 0;
+		padding:0;
+		position: absolute; /* Para que se salga del flujo */
+		top: 70px;
+		left: 0;
+		width: 100%;
+		transform: translateX(-200%);
+		transition: all 0.3s;
+		z-index: 10;
+	}
+	.menu a{
+		font-size: 20px;
+	}
+
+	.menu ul{
+		display: block;
+		margin: 0;
+	}
+
+	
+	.menu ul:first-child{
+		padding-left: 0;
+		border-radius: 0;
+	}
+	
+	.menu ul li:hover ul{
+		display: none;
+		position: static;
+	}
+
+
+	#btn-menu:checked ~ .menu{
+		transform: translateX(0%);
+	}
+
+	.menu ul ul{
+		background-color: rgba(0,0,0,0.4);
+	}
+
+	.menu ul ul a{
+		padding: 15px 40px;
+	}
+
+	#barraSearch{
+		margin-top: 10px;
+		text-align: center;
+	}
+
+	#barraSearch input{
+		width: 500px;
+	}
+
+	#barraSearch span{
+		font-size: 15px;
+	}
+
+	main{
+		margin-top: 20px;
+	}
+}
+
+
+/*********************** STYLE PARA LA PÁGINA DE INICIO */
+#login,#registro{
+	width: 600px;
+}
+
+#login h3{
+	border-bottom: solid black 1px;
+}
+#registro h3{
+	border-bottom: solid black 1px;
+}
+
+#login .row{
+	margin-top: 5px;
+}
+
+
+#registro .row{
+	margin-top: 5px;
+}
+
+#caja_captcha img{
+	width: 231px;
+	height: 34px;
+}
+
+
+/*pongo todos mis mensajes de errores escondidos */
+#no_existe,#suggestion,#passDistinto,#mail_repetido,#user_repetido,#error_captcha,#loglabel_empty,#camposVacios,
+#passWrong,#imagenNoAceptada,#elegirImgConError,#enviarSinImg,#imgRepetidaEnCarpeta,#errorAlSubir,#imgRepetidaEnPagina,
+#contactoError,#contactoSuccess,#emailContactoNoValid,#contactoVacios,#solicitarJuradoVacios,#solicirarJuradoError,#solicirarJuradoSuccess{
+	display: none;
+}
+
+
+/********************** STYLE PARA LA PÁGINA DE CONCURSOS */
+
+.allConcursos{
+	margin-top: 10px;
+}
+
+.contenedorConcursos .soloImagen img{
+	width: 300px;
+	height: 200px;
+	border: solid 1px black;
+	padding: 3px;
+}
+
+
+/********************* STYLE PARA LA PÁGINA DE PERFIL */
+
+#fotoPerfil img{
+	width: 150px;
+	height: 120px;
+	border-radius: 50%;
+}
+
+#fotoPerfil div:first-child{
+	text-align: center;
+}
+
+
+#fotoPerfil button{
+	margin-top: 5px;
+	width: 100%;
+	display: none; /* De primeras lo dejaremos oculto, con la funcion de JS lo mostraré */
+}
+
+
+#changeImgProfile{
+	position: absolute;
+	visibility: hidden;
+	width: 0;
+}
+
+
+/************************* STYLE PARA LA PÁGINA SOBRE INFORMACIÓN DE LA APLICACIÓN */
+
+#id_information h1{
+	color: white;
+	padding: 5px;
+	background-color:#9C9BC4;
+	border-radius: 10px;
+}
+
+@keyframes walk-east {
+	from { background-position: 0px; }
+	to { background-position: -1133px; }
+}
+
+#sprite_guy{
+	background: url('./images/sprite1.png');
+	width: 103px;
+	height: 80px;
+	animation: walk-east 1.0s steps(11) infinite;
+}
+
+/******************** STYLE PARA EL FORMULARIO DE LA PÁGINA CONSULTAR */
+
+#mailContacto .row{
+	margin-bottom: 5px;
+}
+
+#mailContacto a{
+	color: black;
+}
+
+#mailContacto textarea{
+	resize:vertical; /* Solo dejaré que sea redimensional en el eje vertical*/
+}
+
+/******************** STYLE PARA EL FORMULARIO DE LA PÁGINA SOLICITAR SER JURADO */
+
+#mailSolicitud .row{
+	margin-bottom: 5px;
+}
+
+#mailSolicitud a{
+	color: black;
+}
+
+#mailSolicitud textarea{
+	resize:vertical; /* Solo dejaré que sea redimensional en el eje vertical*/
+}
+
+/******************** STYLE PARA EL FORMULARIO DE CREACION DE CONCURSOS */
+#nuevoConcursoForm .row{
+	margin-bottom: 5px;
+}
+
+
+#selectPortada button{
+	margin-top: 5px;
+	width: 100%;
+	display: none; /* De primeras lo dejaremos oculto, con la funcion de JS lo mostraré */
+}
+
+#infoImage{
+	display: block;
+	text-align: center;
+}
+
+
+#elegirImagenPortada{
+	/* Con estas propiedades digo que mi input para seleccionar la imagen de portada no se vea */
+	position: absolute;
+	visibility: hidden;
+	width: 0;
+}
+
+#nuevoConcursoForm textarea{
+	resize:vertical; /* Solo dejaré que sea redimensional en el eje vertical*/
+}
+
+/******************** STYLE PARA LA PÁGINA DE INFORMACIÓN SOBRE LOS CONCURSOS */
+
+#headerConcurso,#contenedorDePremios{
+	border-bottom: solid 1px #fff;
+	margin-bottom: 5px;
+}
+
+#contenedorDePremios img{
+	margin-top: 2px;
+	width: 250px;
+	height: 170px;
+}
+
+#inputFilePlugin{
+	margin-bottom: 2px;
+}
+#hasPuntuado,#mismosPuntos{
+	display: none;	/* estos dos contenedores de primeras no aparecerán pero luego los mostraré */
+}
+
+/* Para las imagenes premiadas le daré un border dependiendo de la posición donde se hayan quedado */
+
+#primerPremio{
+ box-shadow: 0px 0px 40px 20px #F9D61C;
+}
+
+#segundoPremio{
+	box-shadow: 0px 0px 40px 20px #DCD9D0;
+}
+
+#tercerPremio{
+	box-shadow: 0px 0px 40px 20px #9A662D;
+}
+
+
+.allPhotosConcurso img{
+	margin-top: 2px;
+	width: 250px;
+	height: 170px;
+}
+
+.btnParaPuntuar{
+	margin-top: 2px;
+}
+
+
+.imagenesDelInput{
+	margin-bottom: 2px;
+}
+
+/******************** STYLE PARA EL FORMULARIO DE CREACION DE HILOS DE LOS CONCURSOS */
+#crearNuevoHilo{
+	width: 500px;
+	margin: auto;
+	text-align: center;
+}
